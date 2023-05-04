@@ -64,3 +64,5 @@ locals {
 }
 ...
 ```
+
+Aliases can be used in the providers to configure the regions where the main deploy and the replica will be done.
