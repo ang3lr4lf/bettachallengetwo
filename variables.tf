@@ -6,14 +6,14 @@ variable "awsSecretKey" {
   type = string
 }
 
-#variable "s3_private" {
-#  type = bool
-#}
+variable "privateBucketsList" {
+  type = list(any)
+}
 
-#variable "s3_bucket_names" {
-#  type = list(any)
-#}
+variable "publicBucketsList" {
+  type = list(any)
+}
 
-variable "lc_ruleset1" {
+variable "lcRulesetOne" {
   type = any
 }

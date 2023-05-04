@@ -1,9 +1,9 @@
 locals {
-  private_buckets = {
-    "challenge-two-checkout" = var.lc_ruleset1,
+  privateBucketsRules = {
+    "challenge-two-checkout" = var.lcRulesetOne,
   }
-  public_buckets = {
-    "challenge-two-product" = var.lc_ruleset1,
+  publicBucketsRules = {
+    "challenge-two-product" = var.lcRulesetOne,
   }
 }
 
@@ -18,8 +18,8 @@ module "public" {
   awsAccessKey       = var.awsAccessKey
   awsSecretKey       = var.awsSecretKey
   s3_private         = false
-  s3_bucket_names    = ["challenge-two-product"]
-  s3_bucket_policies = local.public_buckets
+  s3_bucket_names    = var.publicBucketsList
+  s3_bucket_policies = local.publicBucketsRules
 }
 
 # Llama al modulo s3_deployer para crear todos los recursos
@@ -33,6 +33,6 @@ module "private" {
   awsAccessKey       = var.awsAccessKey
   awsSecretKey       = var.awsSecretKey
   s3_private         = true
-  s3_bucket_names    = ["challenge-two-payment", "challenge-two-checkout"]
-  s3_bucket_policies = local.private_buckets
+  s3_bucket_names    = var.privateBucketsList
+  s3_bucket_policies = local.privateBucketsRules
 }
