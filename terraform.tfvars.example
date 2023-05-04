@@ -1,0 +1,31 @@
+awsAccessKey = "ACCOUNTACCESSKEY"
+awsSecretKey = "ACCOUNTSECRETKEY"
+
+lc_ruleset1 = { life_cycle_rules = [
+  {
+    id     = "Rule Set One"
+    status = "Enabled"
+    abort_incomplete_multipart_upload = {
+      days_after_initiation = 7
+    }
+    transition = {
+      days          = 30
+      storage_class = "GLACIER"
+    }
+    expiration = {
+      days = 600
+    }
+    noncurrent_version_transition = {
+      newer_noncurrent_versions = 2
+      noncurrent_days           = 15
+      storage_class             = "GLACIER"
+    }
+    noncurrent_version_expiration = {
+      newer_noncurrent_versions = 2
+      noncurrent_days           = 30
+    }
+    filter = {
+      prefix = "some"
+    }
+  }
+] }
